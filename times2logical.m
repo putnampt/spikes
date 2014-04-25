@@ -16,7 +16,7 @@
 %
 
 
-function [logical] = times2logical(times)
+function [logical] = times2logical(times, length)
 
-logical = zeros(1,size(times,2));
+logical = zeros(length);
 logical(round(times)) = 1;
