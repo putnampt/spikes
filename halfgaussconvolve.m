@@ -1,7 +1,6 @@
 function [ estimatedRate ] = halfgaussconvolve( spikes, width )
 %HALFGAUSSCONVOLVE Summary of this function goes here
 %   Detailed explanation goes here
-output_args = 0;
 wholeWidth =width*2;
 alpha = 8;
 wholeGauss = gausswin(wholeWidth,alpha);

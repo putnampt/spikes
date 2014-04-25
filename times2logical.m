@@ -1,4 +1,5 @@
-%% times2logical
+function [logical] = times2logical(times, length)
+%TIMES2LOGICAL Summary of this function goes here
 % This function takes a 1xN or Nx1 matrix of time points (in milliseconds)
 % and returns a 1xN length logical matrix where 1 represents a millisecond
 % during which a spike occured and 0 represents a millsecond with no spike.
@@ -13,10 +14,6 @@
 % Outputs:
 %      _logical_ - 1xN matrix of doubles, where each value represents a
 %      millisecond where a spike occured (1) or did not occur (0)
-%
 
-
-function [logical] = times2logical(times, length)
-
-logical = zeros(length);
+logical = zeros(1, length);
 logical(round(times)) = 1;
