@@ -1,14 +1,21 @@
-function [estimatedRate] = slidingwindow(spikes, size, overlap)
-%SLIDINGWINDOW Summary of this function goes here
-%   Detailed explanation goes here
+ function [estimatedRate] = slidingwindow(spikes, bin, overlap)
+% %SLIDINGWINDOW Summary of this function goes here
+% %   Detailed explanation goes here
 
-    if unique(spikes) == [0, 1] % If spikes are represented in a logical vector
-        
-        estimatedRate = zeros(1, size(spikes,2)); % Preallocate _estimatedRate_
- 
-    else % If spikes are represented in time points
-        
-    end
-    
+estimatedRate = spikes*1000;
+
+
+if overlap == 0
+    step = 1;
+else
+    step = overlap;
 end
+
+for start = 1:step:size(spikes,2)-bin
+    stop = start+bin-1;
+    estimatedRate(start:stop) = mean(estimatedRate(start:stop));
+end
+
+estimatedRate(size(spikes,2)-bin+1:size(estimatedRate,2)) = mean(estimatedRate(size(spikes,2)-bin+1:size(estimatedRate,2)));
+
 

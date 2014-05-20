@@ -15,5 +15,9 @@ function [logical] = times2logical(times, length)
 %      _logical_ - 1xN matrix of doubles, where each value represents a
 %      millisecond where a spike occured (1) or did not occur (0)
 
+if round(times(1)) == 0 %If a spike occured in the first ms
+   times(1) = ceil(times(1)); %Shift by 1 ms
+end
+
 logical = zeros(1, length);
 logical(round(times)) = 1;
